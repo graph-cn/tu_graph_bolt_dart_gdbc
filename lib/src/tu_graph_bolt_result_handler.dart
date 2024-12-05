@@ -104,9 +104,9 @@ Map<GdbTypes, TypeHandler> typeHandler = {
   // GdbTypes.map: (v, m) => _handleMap(v.mVal, m),
   // GdbTypes.set: (v, m) => _handleSet(v.uVal, m),
   //
-  GdbTypes.bool: (v, m) => v.val,
-  GdbTypes.int: (v, m) => v.val,
-  GdbTypes.double: (v, m) => v.val,
+  GdbTypes.bool: (v, m) => (v as BooleanValue).asBoolean(false),
+  GdbTypes.int: (v, m) => (v as IntegerValue).val,
+  GdbTypes.double: (v, m) => (v as FloatValue).val,
   //
   GdbTypes.string: (v, m) => (v as StringValue).val,
   GdbTypes.bytes: (v, m) => throw UnimplementedError(), // TODO
