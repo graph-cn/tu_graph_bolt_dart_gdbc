@@ -111,9 +111,9 @@ Map<GdbTypes, TypeHandler> typeHandler = {
   GdbTypes.string: (v, m) => (v as StringValue).val,
   GdbTypes.bytes: (v, m) => throw UnimplementedError(), // TODO
   //
-  GdbTypes.date: (v, m) => (v as DateValue),
+  GdbTypes.date: (v, m) => (v as DateValue).asLocalDate(),
   // GdbTypes.time: (v, m) => _handleTime(v.tVal, m),
-  GdbTypes.dateTime: (v, m) => (v as DateTimeValue),
+  GdbTypes.dateTime: (v, m) => (v as DateTimeValue).asDateTime(),
   // GdbTypes.duration: (v, m) => _handleDuration(v.duVal, m),
 
   // GdbTypes.geo: (v, m) => _handleGeo(v, m),

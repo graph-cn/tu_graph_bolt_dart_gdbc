@@ -10,8 +10,12 @@ import 'package:bolt_dart_gdbc/bolt_dart_gdbc.dart';
 import 'package:tu_graph_bolt_dart_gdbc/tu_graph_bolt_dart_gdbc.dart';
 import 'package:test/test.dart';
 
-// var url = 'localhost:8888';
-var url = '139.9.187.207:7687';
+var url = 'localhost:8888';
+// var url = '139.9.187.207:7687';
+// var url = '47.96.233.86:7687';
+
+// var password = '73@TuGraph';
+var password = '!o2HVAzoprNDRZyLt';
 
 void main() {
   group('A group of tests', () {
@@ -20,7 +24,7 @@ void main() {
       TuGraphResultHandler();
       DriverManager.registerDriver(TuGraphDriver());
       conn = await DriverManager.getConnection(
-          'gdbc.tu://$url?username=admin&password=73@TuGraph&db=ocean');
+          'gdbc.tu://$url?username=admin&password=$password&db=default');
     });
 
     test('test String', () async {
@@ -136,6 +140,11 @@ void main() {
       print(rs);
     });
 
+    test('test delete index', () async {
+      var rs = await conn.executeQuery(r"""CALL db.deleteIndex('KNOW', 'a')""");
+      print(rs);
+    });
+
     test('decr q', () async {
       var rs = await conn.executeQuery(r"""MATCH (n:place)  RETURN count(n)""");
       var count = rs.rows[0][0];
@@ -153,7 +162,42 @@ void main() {
       // var rs = await conn
       //     .executeQuery(r"""MATCH (n:ttt)  RETURN n SKIP 0 LIMIT 30""");
       // print(rs);
-      var rs = await conn.executeQuery(r"""MATCH (n:ttt)  RETURN count(n)""");
+      var rs = await conn
+          .executeQuery(r"""CALL db.createLabel('edge', 'KNOW2', '[]' , 
+[ 'a', 'INT8', true], 
+[ 'b', 'INT16', true], 
+[ 'c', 'INT32', true], 
+[ 'd', 'INT64', true], 
+[ 'e', 'DOUBLE', true], 
+[ 'f', 'STRING', true], 
+[ 'g', 'DATE', true], 
+[ 'h', 'DATETIME', true], 
+[ 'i', 'BOOL', true])""");
+      print(rs);
+    });
+    test('test create edge label', () async {
+      // var rs = await conn
+      //     .executeQuery(r"""MATCH (n:ttt)  RETURN n SKIP 0 LIMIT 30""");
+      // print(rs);
+      var rs =
+          await conn.executeQuery(r"""CALL db.createEdgeLabel('KNOW2', '[]' , 
+[ 'a', INT8, true], 
+[ 'b', INT16, true], 
+[ 'c', INT32, true], 
+[ 'd', INT64, true], 
+[ 'e', DOUBLE, true], 
+[ 'f', STRING, true], 
+[ 'g', DATE, true], 
+[ 'h', DATETIME, true], 
+[ 'i', BOOL, true])""");
+      print(rs);
+    });
+    test('test v4.5', () async {
+      // var rs = await conn
+      //     .executeQuery(r"""MATCH (n:ttt)  RETURN n SKIP 0 LIMIT 30""");
+      // print(rs);
+      var rs = await conn
+          .executeQuery(r"""MATCH (n:tt)  RETURN n SKIP 0 LIMIT 30""");
       print(rs);
     });
   });
