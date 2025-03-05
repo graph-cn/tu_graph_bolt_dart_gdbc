@@ -23,6 +23,13 @@ void main() {
           'gdbc.tu://$url?username=admin&password=73@TuGraph&db=ocean');
     });
 
+    test('test create where', () async {
+      var rs = await conn.executeQuery(
+          r"""MATCH (from), (to) WHERE from.id = "1007" and to.id = "10002" 
+CREATE (from)-[:FRIEND_OF {img=null,birth_date2=null,img2=null,tes=null,aaaa=null,birth_date=null,esss=null,sdd=null}]->(to);""");
+      print(rs);
+    });
+
     test('test String', () async {
       var rs = await conn.executeQuery(r"CALL db.vertexLabels() YIELD label");
       print(rs);

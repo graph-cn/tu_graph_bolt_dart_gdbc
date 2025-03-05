@@ -10,9 +10,9 @@ import 'package:bolt_dart_gdbc/bolt_dart_gdbc.dart';
 import 'package:tu_graph_bolt_dart_gdbc/tu_graph_bolt_dart_gdbc.dart';
 import 'package:test/test.dart';
 
-var url = 'localhost:8888';
+// var url = 'localhost:8888';
 // var url = '139.9.187.207:7687';
-// var url = '47.96.233.86:7687';
+var url = '47.96.233.86:7687';
 
 // var password = '73@TuGraph';
 var password = '!o2HVAzoprNDRZyLt';
@@ -196,8 +196,7 @@ void main() {
       // var rs = await conn
       //     .executeQuery(r"""MATCH (n:ttt)  RETURN n SKIP 0 LIMIT 30""");
       // print(rs);
-      var rs = await conn
-          .executeQuery(r"""MATCH (n:tt)  RETURN n SKIP 0 LIMIT 30""");
+      var rs = await conn.executeQuery(r"""CALL dbms.system.info();""");
       print(rs);
     });
   });

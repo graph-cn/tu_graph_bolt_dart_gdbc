@@ -1,7 +1,8 @@
 name: tu_graph_bolt_dart_gdbc
 description: A starting point for Dart libraries or applications.
-version: 1.0.0
+version: 0.0.5
 # repository: https://github.com/my_org/my_repo
+publish_to: none
 
 environment:
   sdk: '>=2.19.0 <4.0.0'
@@ -9,7 +10,10 @@ environment:
 # Add regular dependencies here.
 dependencies:
   bolt_dart_gdbc:
-    path: ../bolt_dart_gdbc
+    git:
+      url: https://atomgit.com/graph-cn/bolt_dart_gdbc.git
+  # bolt_dart_gdbc:
+  #   path: ../bolt_dart_gdbc
 
 dev_dependencies:
   lints: ^5.0.0

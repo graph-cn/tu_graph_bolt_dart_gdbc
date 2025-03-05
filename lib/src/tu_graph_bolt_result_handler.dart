@@ -9,6 +9,8 @@ class TuGraphResultHandler extends BoltResultHandler {
   ResultSet handle(List chunkValues) {
     var rs = BoltResultSet();
     var metas = chunkValues.removeAt(0);
+    // TODO
+    // ignore: unused_local_variable
     var bookmarkAndPlan = chunkValues.removeLast();
 
     var columnNames = metas['fields'] as ListValue;
