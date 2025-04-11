@@ -1,5 +1,5 @@
 name: tu_graph_bolt_dart_gdbc
-description: A starting point for Dart libraries or applications.
+description: A Dart implementation of GDBC for TuGraph.
 version: 0.0.5
 # repository: https://github.com/my_org/my_repo
 publish_to: none
