@@ -2,16 +2,16 @@ name: tu_graph_bolt_dart_gdbc
 description: A Dart implementation of GDBC for TuGraph.
 version: 0.0.6
 # repository: https://github.com/my_org/my_repo
-publish_to: none
 
 environment:
   sdk: '>=2.19.0 <4.0.0'
 
 # Add regular dependencies here.
 dependencies:
-  bolt_dart_gdbc:
-    git:
-      url: https://github.com/graph-cn/bolt_dart_gdbc.git
+  bolt_dart_gdbc: ^0.0.6
+  # bolt_dart_gdbc:
+  #   git:
+  #     url: https://github.com/graph-cn/bolt_dart_gdbc.git
   # bolt_dart_gdbc:
   #   path: ../bolt_dart_gdbc
 
