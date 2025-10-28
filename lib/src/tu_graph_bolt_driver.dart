@@ -12,8 +12,13 @@ class TuGraphDriver extends BoltDriver {
   Future<Connection> connect(
     String url, {
     Map<String, dynamic>? properties,
+    Function()? onClose,
   }) async {
-    var conn = await super.connect(url, properties: properties);
+    var conn = await super.connect(
+      url,
+      properties: properties,
+      onClose: onClose,
+    );
     var rs = await conn.executeQuery("CALL dbms.system.info()");
     var version = getVersion(rs);
     conn.version = version;
